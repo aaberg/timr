@@ -1,0 +1,22 @@
+.panel{
+  margin-top: 40px;
+  border: 1px solid #cccccc;
+  box-shadow: 0 1px 3px #aaaaaa;
+  padding:0;
+}
+
+.panel-header {
+  padding: 10px 20px;
+  border-bottom: 1px solid #cccccc;
+  background: white;
+  vertical-align: top;
+}
+
+.panel-header h5{
+  margin: 0;
+}
+
+.panel-body {
+  padding: 20px;
+  background: #eee;
+}

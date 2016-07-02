@@ -4,7 +4,7 @@ module.exports = {
   entry: [
     "webpack-dev-server/client?http://0.0.0.0:3000",
     "webpack/hot/only-dev-server",
-    "./src/app.jsx"
+    "./src/main/app.jsx"
   ],
   output: {
     path: path.resolve(__dirname, "build"),
@@ -21,19 +21,22 @@ module.exports = {
       test: /\.css$/,
       loader: "style-loader!css-loader"
     }, {
-      test: /\.svg$/,
+      test: /\.svg/,
       loader: 'file'
     }, {
-      test: /\.ttf$/,
+      test: /\.ttf/,
       loader: 'file'
     }, {
-      test: /\.woff2?$/,
+      test: /\.woff2?/,
       loader: 'file'
     },{
-      test: /\.eot$/,
+      test: /\.eot/,
       loader: 'file'
     },{
-      test: /\.png$/,
+      test: /\.png/,
+      loader: 'file'
+    },{
+      test: /\.svg/,
       loader: 'file'
     }]
   },
