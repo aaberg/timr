@@ -6,7 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, browserHistory} from 'react-router';
 import {createStore, combineReducers} from 'redux';
-import {loggedInReducer, profileDisplayReducer} from './reducers/reducers.js';
+import {loggedInReducer, profileDisplayReducer, newActivityInoutReducer} from './reducers/reducers.js';
 import {Provider} from 'react-redux';
 import firebase from 'firebase';
 import {firebaseConfig} from './config';
@@ -19,6 +19,7 @@ firebase.initializeApp(firebaseConfig);
 const store = createStore(combineReducers({
   profileDisplay: profileDisplayReducer,
   auth: loggedInReducer,
+  newActivity: newActivityInoutReducer
 }));
 
 firebase.auth().getRedirectResult().then((res) => {

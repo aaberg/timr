@@ -5,6 +5,12 @@ class Activity {
 
   set category(category: String) {this._category = category;}
   get category() : String {return this._category;}
+  
+  set from(val : Date) {this._from = val;}
+  get from() : Date {return this._from;}
+  
+  set to(val: Date) {this._to = val;}
+  get to(): Date {return this._to;}
 
   constructor(activity : string) {
 
@@ -15,12 +21,17 @@ class Activity {
       this.name = activity.substring(0, index);
       this.category = activity.substring(index + 1, activity.length);
     }
+
+    this.from = new Date();
+    this.to = null;
   }
   
   toObject() : object {
     return {
       name: this.name,
-      category: this.category
+      category: this.category,
+      from: this.from.getTime(),
+      to: this.to == null ? null : this.to.getTime()
     };
   }
 }

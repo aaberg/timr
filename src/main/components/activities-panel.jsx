@@ -1,22 +1,20 @@
 import React from 'react';
 import {PanelHeader, PanelBody} from './panel.jsx';
-import Activity from '../api/activity.js';
-import Database from '../db/database.js';
 
 
 class ActivitiesPanel extends React.Component {
 
-  handleKeyUp(event) {
-    const isReturn = event.keyCode === 13;
-    if (isReturn) {
-      const val = this.refs.activityInput.value;
-      const activity = new Activity(val);
-      const db = new Database();
-      const res = db.writeNewActivity(activity);
+  handleInpValChange() {
+    const val = this.refs.activityInput.value;
+    this.props.newActivityInputValChange(val);
+  }
 
-      console.log(res);
-    }
+  handleKeyUp(event) {
     
+    // Return button is clicked
+    if (event.keyCode === 13) {
+      this.props.addNewActivity();
+    }
   }
 
   render() {
@@ -31,6 +29,8 @@ class ActivitiesPanel extends React.Component {
             type="text"
             placeholder="What are you working on"
             className="u-full-width"
+            value={this.props.nawActivityVal}
+            onChange={this.handleInpValChange.bind(this)}
             onKeyUp={this.handleKeyUp.bind(this)}>
           </input>
         </PanelBody>
@@ -38,5 +38,9 @@ class ActivitiesPanel extends React.Component {
     )
   }
 }
+
+ActivitiesPanel.contextTypes = {
+  store: React.PropTypes.object
+};
 
 export default ActivitiesPanel;
