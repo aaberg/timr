@@ -36,7 +36,7 @@ class LoginBtn extends React.Component {
 
     const {store} = this.context;
     const user = store.getState().auth.user;
-    const profileVisible = store.getState().profileDisplay.profileVisible;
+    const profileVisible = store.getState().profile.profileVisible;
 
     if (user) {
       return (

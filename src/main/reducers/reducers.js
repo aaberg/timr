@@ -1,9 +1,9 @@
 import loggedIn from './loggedIn.js';
-import profileDisplay from './profileDisplay.js';
+import profile from './profile.js';
 import newActivityInput from './newActivityInput.js';
 
 const loggedInReducer = loggedIn;
-const profileDisplayReducer = profileDisplay;
+const profileReducer = profile;
 const newActivityInoutReducer = newActivityInput;
 
-export {loggedInReducer, profileDisplayReducer, newActivityInoutReducer};
+export {loggedInReducer, profileReducer, newActivityInoutReducer};

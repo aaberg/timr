@@ -1,8 +1,9 @@
 import React from 'react';
 import Navbar from './navbar.jsx';
 import ActivitiesPanel from './activities-panel.jsx';
-import Database from '../db/database.js';
+import {writeNewActivity} from '../utils/database.js';
 import Activity from '../api/activity.js';
+import Loading from './loading.jsx';
 
 class RegPage extends React.Component {
 
@@ -34,10 +35,11 @@ class RegPage extends React.Component {
     const activity = new Activity(store.getState().newActivity.input);
     activity.from = new Date();
     activity.to = null;
+    
+    const orgId = store.getState().profile.selectedOrg.orgId;
 
-    const database = new Database();
-
-    database.writeNewActivity(activity).then(() => {
+    writeNewActivity(activity, orgId).then(() => {
+      store.dispatch({type: 'NEW_ACTIVITY_INPUT', inpVal: ''});
       console.log('activity written');
     });
   }
@@ -46,9 +48,14 @@ class RegPage extends React.Component {
 
     const {store} = this.context;
 
+    const selectedOrgId = store.getState().profile.selectedOrg.orgId;
+    if(selectedOrgId === '') {
+      return <Loading />;
+    }
+
     return (
       <div>
-        <Navbar />
+        <Navbar selectedOrgName={store.getState().profile.selectedOrg.name} />
         <div className="container">
           <ActivitiesPanel
             newActivityInputValChange={this.handleNewActivityInputChange.bind(this)}

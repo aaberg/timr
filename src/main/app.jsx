@@ -6,18 +6,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, browserHistory} from 'react-router';
 import {createStore, combineReducers} from 'redux';
-import {loggedInReducer, profileDisplayReducer, newActivityInoutReducer} from './reducers/reducers.js';
+import {loggedInReducer, profileReducer, newActivityInoutReducer} from './reducers/reducers.js';
 import {Provider} from 'react-redux';
 import firebase from 'firebase';
 import {firebaseConfig} from './config';
 import Login from './components/login-page.jsx';
 import RegPage from './components/reg-page.jsx';
+import {userAuthenticated, userUnAuthenticated} from './utils/auth.js';
 
 firebase.initializeApp(firebaseConfig);
 
 // const store = createStore(loggedInReducer);
 const store = createStore(combineReducers({
-  profileDisplay: profileDisplayReducer,
+  profile: profileReducer,
   auth: loggedInReducer,
   newActivity: newActivityInoutReducer
 }));
@@ -46,17 +47,9 @@ ReactDOM.render((
 // Changes state with user authentication status.
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log('authenticated');
-    store.dispatch({
-      type: 'LOGGED_IN',
-      user: user
-    });
+    userAuthenticated(store, user);
   } else {
-    store.dispatch({
-      type: 'LOGGED_IN',
-      user: null
-    });
-    console.log('not authenticated');
+    userUnAuthenticated(store);
   }
 });
 

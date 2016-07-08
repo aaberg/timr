@@ -13,6 +13,7 @@ class Navbar extends React.Component {
         <div className="u-pull-right">
           <LoginBtn />
         </div>
+        <div className="selected-org u-pull-right">{this.props.selectedOrgName}</div>
         <h3>timr</h3>
 
       </div>
