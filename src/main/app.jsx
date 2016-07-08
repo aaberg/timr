@@ -52,8 +52,3 @@ firebase.auth().onAuthStateChanged((user) => {
     userUnAuthenticated(store);
   }
 });
-
-
-firebase.database().ref('customers/nordea').on('value', function(entry) {
-  console.log('from db: ' + entry.val().name);
-});

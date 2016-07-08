@@ -19,7 +19,7 @@ class Login extends React.Component{
     const linkToRegPage = store.getState().auth.user ?
       (
         <div className='navbar-link-wrapper'>
-          <Link to="/reg" className="button">Goto dashboard</Link>
+          <Link to="/reg" className="button">Go to Console</Link>
         </div>
       ) : null;
 

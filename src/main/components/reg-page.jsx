@@ -35,7 +35,7 @@ class RegPage extends React.Component {
     const activity = new Activity(store.getState().newActivity.input);
     activity.from = new Date();
     activity.to = null;
-    
+
     const orgId = store.getState().profile.selectedOrg.orgId;
 
     writeNewActivity(activity, orgId).then(() => {
@@ -63,6 +63,7 @@ class RegPage extends React.Component {
             addNewActivity={this.handleAddingOfNewActivity.bind(this)}
           />
         </div>
+
 
       </div>
 
