@@ -1,7 +1,7 @@
 {
-  "name": "underwriting-test-ui",
+  "name": "timr",
   "version": "1.0.0",
-  "description": "User interface for testing the underwriting engine",
+  "description": "Time tracker",
   "main": "app.js",
   "scripts": {
     "test": "mocha ./src/test/**/*.js --compilers js:babel-core/register",
