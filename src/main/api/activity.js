@@ -11,6 +11,9 @@ class Activity {
   
   set to(val: Date) {this._to = val;}
   get to(): Date {return this._to;}
+  
+  set uid(uid: String) {this._uid = uid;}
+  get uid() : String {return this._uid;}
 
   constructor(activity : string) {
 
@@ -31,7 +34,8 @@ class Activity {
       name: this.name,
       category: this.category,
       from: this.from.getTime(),
-      to: this.to == null ? null : this.to.getTime()
+      to: this.to == null ? null : this.to.getTime(),
+      uid: this.uid
     };
   }
 }

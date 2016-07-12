@@ -35,6 +35,7 @@ class RegPage extends React.Component {
     const activity = new Activity(store.getState().newActivity.input);
     activity.from = new Date();
     activity.to = null;
+    activity.uid = store.getState().auth.user.uid;
 
     const orgId = store.getState().profile.selectedOrg.orgId;
 

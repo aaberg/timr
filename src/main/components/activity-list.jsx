@@ -1,8 +1,7 @@
 import React from 'react';
 
-class ActivityList extends React.Component {
+const ActivityList = ({}) => {
 
-  render() {
-    
-  }
-}
+};
+
+export default ActivityList;
