@@ -22,7 +22,7 @@ class RegPage extends React.Component {
     this.unsubscribe();
   }
 
-  handleNewActivityInputChange(newVal:  string) {
+  handleNewActivityInputChange(newVal) {
     const {store} = this.context;
     store.dispatch({
       type: 'NEW_ACTIVITY_INPUT',
